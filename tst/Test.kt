@@ -9,7 +9,7 @@ class Test {
     fun taskOneTest() {
         val expectedResult = 7L
 
-        Assertions.assertEquals(expectedResult, taskOne("inp/test.in"));
+        Assertions.assertEquals(expectedResult, taskOne("inp/test.in"))
     }
 
     @Test
@@ -17,6 +17,6 @@ class Test {
     fun taskTwoTest() {
         val expectedResult = 0L
 
-        Assertions.assertEquals(expectedResult, taskTwo("inp/test.inp"));
+        Assertions.assertEquals(expectedResult, taskTwo("inp/test.inp"))
     }
 }
