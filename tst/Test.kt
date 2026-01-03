@@ -7,7 +7,7 @@ class Test {
     @Test
     @DisplayName("task one test")
     fun taskOneTest() {
-        val expectedResult = 0L
+        val expectedResult = 7L
 
         Assertions.assertEquals(expectedResult, taskOne("inp/test.in"));
     }
