@@ -12,7 +12,7 @@ fun taskOne(filePath : String) : Long  {
     val patterns = readInput(filePath)
 
     var ans = 0L
-    for (pattern in patterns.map { ButtonPattern.of(it)}) {
+    for (pattern in patterns.map { ButtonPattern.compose(it)}) {
         ans += findShortest(pattern)
     }
 
@@ -21,18 +21,16 @@ fun taskOne(filePath : String) : Long  {
 
 fun findShortest(pattern : ButtonPattern) : Int {
     return pattern.buttons
-        .combinations()
+        .pSet()
         .sortedBy { it.size }
         .first { s -> s.fold(0) {p, n -> p xor n } == pattern.lights }
         .size
 }
 
 
-fun <T> List<T>.combinations(): List<Set<T>> =
-    if (isEmpty()) listOf(emptySet())
-    else drop(1)
-        .combinations()
-        .let { rest -> rest + rest.map { it + first() }
+fun <T> List<T>.pSet(): List<Set<T>> =
+    fold(listOf(emptySet())) {
+        carry, e -> carry + carry.map {it + e}
     }
 
 fun readInput(filePath : String) : List<String> = BufferedReader(FileReader(filePath)).readLines()
